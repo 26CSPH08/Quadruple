@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home - Quadruple</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Della+Respira&family=Caveat:wght@400;700&family=Merriweather:wght@400;700&family=Lora:wght@400;600&display=swap');
+body{margin:0;font-family:"Della Respira",serif;background-color:#6A0F2C;background-image:repeating-linear-gradient(90deg,#6A0F2C 0px,#6A0F2C 100px,#0F6B6B 100px,#0F6B6B 200px);min-height:100vh;}
+.topbar{display:flex;justify-content:center;gap:8px;padding:12px;background:#F4EFEA;flex-wrap:wrap;}
+.topbar button{width:auto;padding:6px 12px;margin:0;font-size:14px;font-family:"Della Respira",serif;background:#F4EFEA;color:#6A0F2C;border:1px solid #6A0F2C;border-radius:6px;cursor:pointer;}
+.topbar button:hover{background:#6A0F2C;color:#F4EFEA;}
+.container{background:#F4EFEA;width:90%;max-width:1100px;padding:28px;border-radius:14px;border-top:6px solid #6A0F2C;border-bottom:6px solid #0F6B6B;margin:30px auto;}
+.quote-box{text-align:center;padding-bottom:20px;border-bottom:2px dashed #6A0F2C;margin-bottom:25px;}
+.quote-main{font-family:"Caveat",cursive;font-size:38px;color:#1F2630;}
+.quote-author{font-family:"Caveat",cursive;font-size:28px;color:#6A0F2C;display:block;margin-top:5px;}
+.books-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px 30px;}
+.book-card{background:white;border-left:5px solid #6A0F2C;border-right:5px solid #0F6B6B;border-radius:12px;padding:16px;text-align:center;}
+.book-card img{width:100%;height:320px;object-fit:contain;background:#fdf6f0;border-radius:8px;display:block;}
+.label{font-family:"Merriweather",serif;font-size:16px;font-weight:700;color:#6A0F2C;margin-top:16px;display:block;}
+.input{font-family:"Lora",serif;font-size:16px;color:#1F2630;margin-top:5px;line-height:1.5;}
+.cart-btn{margin-top:16px;padding:6px 14px;font-size:13px;background:#F4EFEA;border:1px solid #0F6B6B;color:#0F6B6B;border-radius:6px;cursor:pointer;float:right;}
+.cart-btn:hover{background:#0F6B6B;color:#F4EFEA;}
+.clear{clear:both;}
+</style>
+</head>
+<body>
+<div class="topbar">
+<button onclick="window.location.href='registration.html'">Registration</button>
+<button onclick="window.location.href='login.html'">Login</button>
+<button onclick="window.location.href='home.html'">Home</button>
+<button onclick="window.location.href='about.html'">About</button>
+<button onclick="window.location.href='cart.html'">My Cart</button>
+<button onclick="window.location.href='contact.html'">Contact</button>
+</div>
+<div class="container">
+<div class="quote-box">
+<span class="quote-main">So many books, So little time,</span>
+<span class="quote-author">- Frank Zappa</span>
+</div>
+<div class="books-grid">
+
+<div class="book-card">
+<img src="https://covers.openlibrary.org/b/isbn/9780571323760-M.jpg">
+<span class="label">Quote</span><div class="input">"Moving on, is a gift. I am moved."</div>
+<span class="label">Author</span><div class="input">Max Porter</div>
+<span class="label">Price</span><div class="input">₹ 399</div>
+<button class="cart-btn" onclick="addToCart('Grief Is the Thing with Feathers',399)">🛒 Add to Cart</button><div class="clear"></div>
+</div>
+
+<div class="book-card">
+<img src="https://covers.openlibrary.org/b/isbn/9780307278449-M.jpg">
+<span class="label">Quote</span><div class="input">"Love is never any better than the lover."</div>
+<span class="label">Author</span><div class="input">Toni Morrison</div>
+<span class="label">Price</span><div class="input">₹ 349</div>
+<button class="cart-btn" onclick="addToCart('The Bluest Eye',349)">🛒 Add to Cart</button><div class="clear"></div>
+</div>
+
+<div class="book-card">
+<img src="https://covers.openlibrary.org/b/isbn/9780143035008-M.jpg">
+<span class="label">Quote</span><div class="input">"He looked at her as a man might look at a faded flower."</div>
+<span class="label">Author</span><div class="input">Leo Tolstoy</div>
+<span class="label">Price</span><div class="input">₹ 499</div>
+<button class="cart-btn" onclick="addToCart('Anna Karenina',499)">🛒 Add to Cart</button><div class="clear"></div>
+</div>
+
+<div class="book-card">
+<img src="https://covers.openlibrary.org/b/isbn/9780061673733-M.jpg">
+<span class="label">Quote</span><div class="input">"The place to improve the world is first in one's own heart."</div>
+<span class="label">Author</span><div class="input">Robert M. Pirsig</div>
+<span class="label">Price</span><div class="input">₹ 420</div>
+<button class="cart-btn" onclick="addToCart('Zen and the Art of Motorcycle Maintenance',420)">🛒 Add to Cart</button><div class="clear"></div>
+</div>
+
+<div class="book-card">
+<img src="https://covers.openlibrary.org/b/isbn/9780141441146-M.jpg">
+<span class="label">Quote</span><div class="input">"I am no bird; and no net ensnares me."</div>
+<span class="label">Author</span><div class="input">Charlotte Bronte</div>
+<span class="label">Price</span><div class="input">₹ 380</div>
+<button class="cart-btn" onclick="addToCart('Jane Eyre',380)">🛒 Add to Cart</button><div class="clear"></div>
+</div>
+
+<div class="book-card">
+<img src="https://covers.openlibrary.org/b/isbn/9780141439570-M.jpg">
+<span class="label">Quote</span><div class="input">"You will always be fond of me."</div>
+<span class="label">Author</span><div class="input">Oscar Wilde</div>
+<span class="label">Price</span><div class="input">₹ 360</div>
+<button class="cart-btn" onclick="addToCart('The Picture of Dorian Gray',360)">🛒 Add to Cart</button><div class="clear"></div>
+</div>
+
+<div class="book-card">
+<img src="https://covers.openlibrary.org/b/isbn/9780061120084-M.jpg">
+<span class="label">Quote</span><div class="input">"Until I feared I would lose it, I never loved to read."</div>
+<span class="label">Author</span><div class="input">Harper Lee</div>
+<span class="label">Price</span><div class="input">₹ 399</div>
+<button class="cart-btn" onclick="addToCart('To Kill a Mockingbird',399)">🛒 Add to Cart</button><div class="clear"></div>
+</div>
+
+<div class="book-card">
+<img src="https://covers.openlibrary.org/b/isbn/9780451524935-M.jpg">
+<span class="label">Quote</span><div class="input">"Big Brother is Watching You."</div>
+<span class="label">Author</span><div class="input">George Orwell</div>
+<span class="label">Price</span><div class="input">₹ 350</div>
+<button class="cart-btn" onclick="addToCart('1984',350)">🛒 Add to Cart</button><div class="clear"></div>
+</div>
+
+<div class="book-card">
+<img src="https://covers.openlibrary.org/b/isbn/9780743273565-M.jpg">
+<span class="label">Quote</span><div class="input">"So we beat on, boats against the current."</div>
+<span class="label">Author</span><div class="input">F. Scott Fitzgerald</div>
+<span class="label">Price</span><div class="input">₹ 375</div>
+<button class="cart-btn" onclick="addToCart('The Great Gatsby',375)">🛒 Add to Cart</button><div class="clear"></div>
+</div>
+
+<div class="book-card">
+<img src="https://covers.openlibrary.org/b/isbn/9780439708180-M.jpg">
+<span class="label">Quote</span><div class="input">"It does not do to dwell on dreams and forget to live."</div>
+<span class="label">Author</span><div class="input">J.K. Rowling</div>
+<span class="label">Price</span><div class="input">₹ 450</div>
+<button class="cart-btn" onclick="addToCart('Harry Potter and the Sorcerers Stone',450)">🛒 Add to Cart</button><div class="clear"></div>
+</div>
+
+</div>
+</div>
+<script>
+function addToCart(name,price){
+  let cart = JSON.parse(localStorage.getItem('cart')||'[]');
+  cart.push({name:name,price:price});
+  localStorage.setItem('cart',JSON.stringify(cart));
+  alert(name + " added to cart 🛒");
+}
+</script>
+</body>
+</html>

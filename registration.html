@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration - My Book Store</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Della+Respira&family=Great+Vibes&display=swap');
+body{
+  margin:0;
+  font-family: "Della Respira", serif;
+  background-color: #6A0F2C;
+  background-image: repeating-linear-gradient(90deg,
+    #6A0F2C 0px, #6A0F2C 98px,
+    #1F2630 98px, #1F2630 100px,
+    #6A0F2C 100px, #6A0F2C 198px,
+    #007d7f 198px, #007d7f 200px,
+    #6A0F2C 200px, #6A0F2C 298px,
+    #4b3d3e 298px, #4b3d3e 300px
+  );
+  min-height: 100vh;
+}
+.topbar{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  padding:12px;
+  background: #F4EFEA;
+  flex-wrap: wrap;
+}
+.topbar button{
+  width:auto;
+  padding:6px 12px;
+  margin:0;
+  font-size:14px;
+  font-family: "Della Respira", serif;
+  background: #F4EFEA;
+  color: #6A0F2C;
+  border:1px solid #6A0F2C;
+  border-radius:6px;
+  cursor:pointer;
+}
+.topbar button:hover{
+  background: #6A0F2C;
+  color: #F4EFEA;
+}
+.container{
+  background: #F4EFEA;
+  width: 520px;
+  padding: 28px;
+  border-radius: 14px;
+  border-top: 6px solid #6A0F2C;
+  margin: 30px auto;
+}
+h2{
+  text-align:center;
+  color:#6A0F2C;
+  margin:0 0 20px 0;
+  font-family: "Della Respira", serif;
+  font-size:34px;
+}
+label{
+  display:block;
+  font-size:22px;
+  margin-top:12px;
+  font-family: "Great Vibes", cursive;
+  color: #4b3d3e;
+}
+input, select{
+  display:block;
+  width:100%;
+  padding:12px 14px;
+  margin:6px 0 16px 0;
+  border-radius:7px;
+  border:1px solid #6A0F2C;
+  box-sizing:border-box;
+  font-size:16px;
+  font-family: "Della Respira", serif;
+  color: #1F2630;
+}
+button.register{
+  display:block;
+  width:100%;
+  padding:11px;
+  background:#6A0F2C;
+  color:#F4EFEA;
+  border:none;
+  border-radius:7px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:15px;
+  font-family: "Della Respira", serif;
+}
+button.register:hover{
+  background:#0F6B6B;
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+<button onclick="window.location.href='registration.html'">Registration Page</button>
+<button onclick="window.location.href='login.html'">Login Page</button>
+<button onclick="window.location.href='home.html'">Home</button>
+<button onclick="window.location.href='about.html'">About</button>
+<button onclick="window.location.href='cart.html'">My Cart</button>
+<button onclick="window.location.href='contact.html'">Contact</button>
+</div>
+
+<div class="container">
+<h2>Registration</h2>
+
+<label>Full Name</label>
+<input type="text" id="name" placeholder="Enter your full name">
+
+<label>Email</label>
+<input type="text" id="email" placeholder="Enter your Gmail address">
+
+<label>Phone Number</label>
+<input type="text" id="phone" placeholder="Enter your phone number">
+
+<label>Password</label>
+<input type="password" id="password" placeholder="Enter your password">
+
+<label>Favourite Book Genre</label>
+<select id="genre">
+  <option value="">Select your favourite genre</option>
+  <option>Fiction</option>
+  <option>Non-Fiction</option>
+  <option>Mystery</option>
+  <option>Romance</option>
+</select>
+
+<button class="register" onclick="register()">Register</button>
+</div>
+
+<script>
+function register(){
+  var name = document.getElementById('name').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var phone = document.getElementById('phone').value.trim();
+  var password = document.getElementById('password').value.trim();
+  var genre = document.getElementById('genre').value;
+
+  var missing = [];
+  if(name === "") missing.push("name");
+  if(email === "") missing.push("email");
+  if(phone === "") missing.push("phone number");
+  if(password === "") missing.push("password");
+  if(genre === "") missing.push("favourite book genre");
+
+  if(missing.length > 0){
+    alert("Kindly enter " + missing.join(", "));
+    return;
+  }
+
+  if(!/^[A-Za-z ]+$/.test(name)){
+    alert("Kindly enter your name using alphabets only");
+    return;
+  }
+  if(!/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(email)){
+    alert("Kindly enter a valid Gmail address with @gmail.com");
+    return;
+  }
+  if(!/^[0-9]+$/.test(phone)){
+    alert("Kindly enter your phone number using numbers only");
+    return;
+  }
+  if(phone.length !== 10){
+    alert("Kindly enter a valid 10-digit phone number");
+    return;
+  }
+  if(password.length < 6){
+    alert("Kindly enter a valid password with minimum 6 characters including alphabets, numbers and special characters");
+    return;
+  }
+
+  fetch('/register', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name, email, phone, password, genre })
+}).then(() => {
+  alert("Registered successfully");
+  window.location.href = 'login.html';
+});
+}
+</script>
+
+</body>
+</html>
